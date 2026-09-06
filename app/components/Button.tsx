@@ -7,7 +7,7 @@ import type {
 type Variant = "solid" | "outline";
 type Color = "gray";
 
-const baseStyles = "inline-flex justify-center rounded-lg text-sm transition-colors";
+const baseStyles = "inline-flex items-center justify-center rounded-lg text-sm transition-colors";
 
 const variantStyles: Record<Variant, string> = {
   solid:

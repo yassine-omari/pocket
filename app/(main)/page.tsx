@@ -1,9 +1,11 @@
-import React from 'react'
+import Hero from "../sections/Hero";
 
 const Home = () => {
   return (
-    <div></div>
-  )
-}
+    <>
+      <Hero />
+    </>
+  );
+};
 
-export default Home
+export default Home;
