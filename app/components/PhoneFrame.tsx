@@ -106,6 +106,7 @@ const PhoneFrame = () => {
         src={phoneCover}
         alt=""
         aria-hidden="true"
+        loading="eager"
         className="pointer-events-none absolute inset-0 h-full w-full"
       />
     </div>

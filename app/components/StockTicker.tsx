@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 
 // x/y are the exact 33 coordinates baked into the original static chart path,
@@ -54,6 +54,12 @@ function formatPercent(percent: number) {
 const StockTicker = () => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [drawn, setDrawn] = useState(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setDrawn(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   const linePath = useMemo(
     () =>
@@ -65,6 +71,20 @@ const StockTicker = () => {
     [],
   );
   const areaPath = `${linePath} V 176 H 16 Z`;
+
+  // Straight-line segments, so the total length is just the sum of each
+  // segment's Euclidean distance — exact, no DOM measurement needed, and
+  // available on the very first (server) render so there's no flash of the
+  // fully-drawn chart before the reveal animation takes over.
+  const pathLength = useMemo(() => {
+    let total = 0;
+    for (let i = 1; i < points.length; i++) {
+      const dx = points[i].x - points[i - 1].x;
+      const dy = points[i].y - points[i - 1].y;
+      total += Math.sqrt(dx * dx + dy * dy);
+    }
+    return total;
+  }, []);
 
   const updateFromClientPoint = (clientX: number, clientY: number) => {
     const svg = svgRef.current;
@@ -134,6 +154,15 @@ const StockTicker = () => {
             <clipPath id="hero-chart-clip">
               <path d={areaPath} />
             </clipPath>
+            <clipPath id="hero-chart-wipe">
+              <rect
+                x="16"
+                y="0"
+                height="208"
+                width={drawn ? 254 : 0}
+                style={{ transition: "width 1.2s ease-out" }}
+              />
+            </clipPath>
             <linearGradient id="hero-chart-gradient" x1="0" x2="0" y1="0" y2="1">
               <stop offset="0%" stopColor="#13B5C8" />
               <stop offset="100%" stopColor="#13B5C8" stopOpacity="0" />
@@ -144,14 +173,16 @@ const StockTicker = () => {
           <line stroke="#a3a3a3" opacity="0.1" x1="0" y1="104" x2="286" y2="104" />
           <line stroke="#a3a3a3" opacity="0.1" x1="0" y1="138.67" x2="286" y2="138.67" />
           <line stroke="#a3a3a3" opacity="0.1" x1="0" y1="173.33" x2="286" y2="173.33" />
-          <rect
-            y="32"
-            width="270px"
-            height="144"
-            fill="url(#hero-chart-gradient)"
-            clipPath="url(#hero-chart-clip)"
-            opacity="0.5"
-          />
+          <g clipPath="url(#hero-chart-wipe)">
+            <rect
+              y="32"
+              width="270px"
+              height="144"
+              fill="url(#hero-chart-gradient)"
+              clipPath="url(#hero-chart-clip)"
+              opacity="0.5"
+            />
+          </g>
           <path
             d={linePath}
             fill="none"
@@ -159,6 +190,11 @@ const StockTicker = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             stroke="#06b6d4"
+            style={{
+              strokeDasharray: pathLength,
+              strokeDashoffset: drawn ? 0 : pathLength,
+              transition: "stroke-dashoffset 1.2s ease-out",
+            }}
           />
           {activeIndex !== null && (
             <>
