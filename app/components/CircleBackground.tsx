@@ -33,7 +33,7 @@ const CircleBackground = (props: CircleBackgroundProps) => {
           aria-hidden="true"
           className="absolute inset-0 h-full w-full"
           style={{
-            animation: `${spinDirection === "clockwise" ? "spin" : "spin-reverse"} ${duration}s linear infinite`,
+            animation: `${spinDirection === "clockwise" ? "circle" : "circle-reverse"} ${duration}s linear infinite`,
           }}
         >
           <path
@@ -71,7 +71,7 @@ const CircleBackground = (props: CircleBackgroundProps) => {
         fill="none"
         aria-hidden="true"
         className="absolute inset-0 h-full w-full"
-        style={{ animation: "spin 5s linear infinite" }}
+        style={{ animation: "circle 5s linear infinite" }}
       >
         <path
           d="M1025 513c0 282.77-229.23 512-512 512S1 795.77 1 513 230.23 1 513 1s512 229.23 512 512Z"
@@ -102,7 +102,7 @@ const CircleBackground = (props: CircleBackgroundProps) => {
         fill="none"
         aria-hidden="true"
         className="absolute inset-0 h-full w-full"
-        style={{ animation: "spin-reverse 6s linear infinite" }}
+        style={{ animation: "circle-reverse 6s linear infinite" }}
       >
         <path
           d="M913 513c0 220.914-179.086 400-400 400S113 733.914 113 513s179.086-400 400-400 400 179.086 400 400Z"

@@ -10,23 +10,18 @@
   --color-foreground: var(--foreground);
 }
 
-@theme {
-  --animate-spin: spin  linear infinite;
-  --animate-spin-reverse: spin-reverse  linear infinite;
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
+@keyframes circle {
+  to {
+    transform: rotate(360deg);
   }
+}
 
-  @keyframes spin-reverse {
-    from {
-      transform: rotate(360deg);
-    }
-    to {
-      transform: rotate(0deg);
-    }
+@keyframes circle-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
 
