@@ -1,19 +1,17 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import phoneCover from "./icons/phone-cover.svg";
-import StockTicker from "./StockTicker";
 
-const array = [
-  { state: "open", value: "6,387.55" },
-  { state: "closed", value: "6,487.09" },
-  { state: "Low", value: "6,322.01" },
-];
+type PhoneFrameProps = {
+  children: ReactNode;
+};
 
-const PhoneFrame = () => {
+const PhoneFrame = ({ children }: PhoneFrameProps) => {
   return (
     <div className="relative aspect-366/729 mx-auto max-w-[366px]">
       <div className="absolute inset-y-[calc(1/729*100%)] right-[calc(5/729*100%)] left-[calc(7/729*100%)] rounded-[calc(58/366*100%)/calc(58/729*100%)] shadow-2xl" />
-      <div className="absolute top-[calc(23/729*100%)] left-[calc(23/366*100%)] grid h-[calc(686/729*100%)] w-[calc(318/366*100%)] grid-cols-1 overflow-hidden bg-gray-900 pt-[calc(23/318*100%)]">
-        <div className="flex flex-col">
+      <div className="absolute top-[calc(23/729*100%)] left-[calc(23/366*100%)] grid h-[calc(686/729*100%)] w-[calc(318/366*100%)] grid-cols-1 grid-rows-1 overflow-hidden bg-foreground pt-[calc(23/318*100%)]">
+        <div className="flex h-full flex-col">
           <div className="grid grid-cols-3 items-center px-4 pt-4">
             <svg
               viewBox="0 0 24 24"
@@ -58,48 +56,7 @@ const PhoneFrame = () => {
               />
             </svg>
           </div>
-          <div className="mt-6 flex-auto rounded-t-2xl bg-white">
-            <div className="p-4">
-              <div className="flex items-center gap-2">
-                <div className="text-xs/6 text-gray-500">
-                  Tailwind Labs, Inc.
-                </div>
-                <div className="text-sm text-gray-900">$CSS</div>
-                <svg
-                  viewBox="0 0 24 24"
-                  className="ml-auto h-6 w-6"
-                  fill="none"
-                >
-                  <path
-                    d="M5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0ZM12 9v6M15 12H9"
-                    stroke="#171717"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <div className="mt-3 border-t border-gray-200 pt-5">
-                <StockTicker />
-                <div className="mt-4 rounded-lg bg-cyan-500 px-4 py-2.5 text-center text-sm font-semibold text-white">
-                  Trade
-                </div>
-                <div className="mt-3 divide-y divide-gray-100 text-sm">
-                  {array.map((row) => (
-                    <div
-                      key={row.value}
-                      className="flex justify-between py-1.5"
-                    >
-                      <div className="text-gray-500">{row.state}</div>
-                      <div className="font-medium text-gray-900">
-                        {row.value}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          {children}
         </div>
       </div>
       <Image
