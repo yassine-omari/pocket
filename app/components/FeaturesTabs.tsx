@@ -5,12 +5,14 @@ import type { ReactNode } from "react";
 import { Tab, TabGroup, TabList } from "@headlessui/react";
 import { AnimatePresence, motion } from "motion/react";
 import FeatureCircle from "./icons/FeatureCircle";
+import { FeatureHeaderText } from "./FeatureScreen";
+import type { FeatureHeader } from "./FeatureScreen";
 import PhoneFrame from "./PhoneFrame";
 
 type Feature = {
   title: string;
   text: string;
-  header: { title: string; subheading: ReactNode };
+  header: FeatureHeader;
   icon: ReactNode;
   content: ReactNode;
 };
@@ -119,10 +121,7 @@ const FeaturesTabs = ({ features }: FeaturesTabsProps) => {
                 exit="exit"
                 className="relative col-start-1 row-start-1 mt-6 px-4 text-white"
               >
-                <h2 className="text-2xl leading-8 font-normal">{active.header.title}</h2>
-                <p className="text-sm text-gray-500 leading-6 font-normal">
-                  {active.header.subheading}
-                </p>
+                <FeatureHeaderText header={active.header} />
               </motion.div>
               <motion.div
                 key={`${active.title}-card`}

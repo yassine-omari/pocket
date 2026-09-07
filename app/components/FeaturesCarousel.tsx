@@ -1,6 +1,6 @@
 "use client";
 
-import { Children, useRef, useState } from "react";
+import { Children, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 type FeaturesCarouselProps = {
@@ -10,7 +10,7 @@ type FeaturesCarouselProps = {
 const FeaturesCarousel = ({ children }: FeaturesCarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const slides = Children.toArray(children);
+  const slides = useMemo(() => Children.toArray(children), [children]);
 
   const handleScroll = () => {
     const container = containerRef.current;
