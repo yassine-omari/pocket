@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import phoneCover from "./icons/phone-cover.svg";
+import phoneCover from "./icons/ui/phone-cover.svg";
 
 type PhoneFrameProps = {
   children: ReactNode;

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
-import Logo from "./icons/Logo";
+import Logo from "./icons/ui/Logo";
 import Button from "./Button";
 
 const navLinks = [

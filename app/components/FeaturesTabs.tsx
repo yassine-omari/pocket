@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import { Tab, TabGroup, TabList } from "@headlessui/react";
 import { AnimatePresence, motion } from "motion/react";
-import FeatureCircle from "./icons/FeatureCircle";
+import FeatureCircle from "./icons/features/FeatureCircle";
 import { FeatureHeaderText } from "./FeatureScreen";
 import type { FeatureHeader } from "./FeatureScreen";
 import PhoneFrame from "./PhoneFrame";
