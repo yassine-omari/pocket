@@ -2,9 +2,10 @@ import { useId } from "react";
 
 type FeatureCircleProps = {
   spin?: boolean;
+  color?: string;
 };
 
-const FeatureCircle = ({ spin = false }: FeatureCircleProps) => {
+const FeatureCircle = ({ spin = false, color = "#13B5C8" }: FeatureCircleProps) => {
   const gradientId = useId();
 
   return (
@@ -25,14 +26,14 @@ const FeatureCircle = ({ spin = false }: FeatureCircleProps) => {
           y2="237"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#13B5C8" />
-          <stop offset="1" stopColor="#13B5C8" stopOpacity="0" />
+          <stop stopColor={color} />
+          <stop offset="1" stopColor={color} stopOpacity="0" />
         </linearGradient>
       </defs>
       <path
         opacity="0.2"
         d="M1 279C1 125.465 125.465 1 279 1s278 124.465 278 278-124.465 278-278 278S1 432.535 1 279Z"
-        stroke="#13B5C8"
+        stroke={color}
       />
       <path
         d="M1 279C1 125.465 125.465 1 279 1"

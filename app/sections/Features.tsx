@@ -22,11 +22,6 @@ const content1 = [
   { feild: "Full name", placeholder: "Albert H. Wiggin" },
   { feild: "Email address", placeholder: "awiggin@chase.com" },
 ];
-const content3 = [
-  { label: "Number of shares", value: "100" },
-  { label: "Current market price", value: "$34.28", icon: true },
-  { label: "Estimated cost", value: "$3,428.00" },
-];
 const content2 = [
   { logo: <Laravel />, bg: "#F9322C", name: "Laravel", number: "4,098.01", percentage: "+4.98%" },
   { logo: <Tuple />, bg: "#5A67D8", name: "Tuple", number: "5,451.10", percentage: "-3.38%" },
@@ -36,6 +31,11 @@ const content2 = [
   { logo: <Statamic />, bg: "#0EA5E9", name: "Statamic", number: "5,040.85", percentage: "-3.11%" },
   { logo: <Mirage />, bg: "#16A34A", name: "Mirage", number: "140.44", percentage: "+9.09%" },
   { logo: <Reversable />, bg: "#8D8D8D", name: "Reversable", number: "550.60", percentage: "-1.25%" },
+];
+const content3 = [
+  { label: "Number of shares", value: "100" },
+  { label: "Current market price", value: "$34.28", icon: true },
+  { label: "Estimated cost", value: "$3,428.00" },
 ];
 
 const FeaturesData = [

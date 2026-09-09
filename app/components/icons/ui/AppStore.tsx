@@ -1,8 +1,14 @@
-const AppStore = () => {
+type Appstore = {
+  bg?: string;
+  text?: string;
+  hover?: string;
+};
+
+const AppStore = ({bg = "bg-gray-800", text = "text-white",hover="hover:bg-gray-900"}: Appstore) => {
   return (
     <a
       aria-label="Download on the App Store"
-      className="rounded-lg bg-gray-800 text-white transition-colors hover:bg-gray-900"
+      className={`rounded-lg ${bg} ${text} transition-colors ${hover}`}
       href="#"
     >
       <svg viewBox="0 0 120 40" aria-hidden="true" className="h-10">
