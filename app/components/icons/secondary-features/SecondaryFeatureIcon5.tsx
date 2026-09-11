@@ -1,7 +1,7 @@
 const SecondaryFeatureIcon5 = () => {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" className="h-8 w-8">
-      <circle cx="16" cy="16" r="16" fill="#A3A3A3" fill-opacity="0.2"></circle>
+      <circle cx="16" cy="16" r="16" fill="#A3A3A3" fillOpacity="0.2"></circle>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
