@@ -1,3 +1,4 @@
+import Faqs from "../sections/faqs";
 import Features from "../sections/Features";
 import GetFreeSharesToday from "../sections/get-free-shares-today";
 import Hero from "../sections/Hero";
@@ -14,6 +15,7 @@ const Home = () => {
       <GetFreeSharesToday />
       <Reviews />
       <Pricing />
+      <Faqs />
     </>
   );
 };
