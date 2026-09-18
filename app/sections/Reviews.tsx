@@ -142,7 +142,7 @@ const TestimonialCard = ({
       </p>
       <p className="mt-3 text-base/7">{text}</p>
     </blockquote>
-    <figcaption className="mt-3 text-sm text-gray-600 before:content-['–_']">
+    <figcaption className="mt-3 text-sm text-gray-600 text-cya before:content-['–_']">
       {author}
     </figcaption>
   </figure>
