@@ -3,9 +3,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 
-// x/y are the exact 33 coordinates baked into the original static chart path,
-// so the rendered curve is pixel-identical. price/percent are the real values
-// captured by hovering the reference site, point for point, left to right.
 const chartX = [
   16.0, 23.9375, 31.875, 39.8125, 47.75, 55.6875, 63.625, 71.5625, 79.5,
   87.4375, 95.375, 103.3125, 111.25, 119.1875, 127.125, 135.0625, 143.0,
@@ -72,10 +69,6 @@ const StockTicker = () => {
   );
   const areaPath = `${linePath} V 176 H 16 Z`;
 
-  // Straight-line segments, so the total length is just the sum of each
-  // segment's Euclidean distance — exact, no DOM measurement needed, and
-  // available on the very first (server) render so there's no flash of the
-  // fully-drawn chart before the reveal animation takes over.
   const pathLength = useMemo(() => {
     let total = 0;
     for (let i = 1; i < points.length; i++) {
