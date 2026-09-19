@@ -84,9 +84,6 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-// Split into 3 groups sized to fill 1/2/3-column layouts evenly: group A
-// (col 1), group C (col 3, split in half between cols 1 & 2 below lg), and
-// group B (col 2).
 const groupASize = Math.ceil(testimonials.length / 3);
 const groupCSize = Math.floor(testimonials.length / 3);
 const groupA = testimonials.slice(0, groupASize);
